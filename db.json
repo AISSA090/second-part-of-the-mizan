@@ -1,0 +1,58 @@
+{
+  "items": [
+    {
+      "id": "1",
+      "title": "Bague Royale Or 18k",
+      "description": "Bague traditionnelle finement ciselée en or massif 18 carats.",
+      "metal": "gold",
+      "weight": 5.2,
+      "status": "disponible",
+      "image": "./pictures/godring.jpg"
+    },
+    {
+      "id": "2",
+      "title": "Bracelet Gourmette Or 18k",
+      "description": "Bracelet maille classique en or jaune poli haute brillance.",
+      "metal": "gold",
+      "weight": 12.8,
+      "status": "disponible",
+      "image": "./pictures/goldbracelet.jpg"
+    },
+    {
+      "id": "3",
+      "title": "Collier Pendentif Or 18k",
+      "description": "Collier élégant en or 18 carats avec finition artisanale.",
+      "metal": "gold",
+      "weight": 9.4,
+      "status": "reserve",
+      "image": "./pictures/goldnecklace.jpg"
+    },
+    {
+      "id": "4",
+      "title": "Chevalière Argent 925",
+      "description": "Bague chevalière moderne en argent massif 925 poinçonné.",
+      "metal": "silver",
+      "weight": 8.5,
+      "status": "disponible",
+      "image": "./pictures/sillverring.jpg"
+    },
+    {
+      "id": "5",
+      "title": "Bracelet Chaîne Argent 925",
+      "description": "Bracelet robuste en argent sterling 925 avec fermoir sécurisé.",
+      "metal": "silver",
+      "weight": 18.0,
+      "status": "vendu",
+      "image": "./pictures/silverbracelet.jpg"
+    },
+    {
+      "id": "6",
+      "title": "Collier Maille Argent 925",
+      "description": "Chaîne collier en argent massif 925 avec éclat durable.",
+      "metal": "silver",
+      "weight": 15.6,
+      "status": "disponible",
+      "image": "./pictures/silvernecklace.jpg"
+    }
+  ]
+}

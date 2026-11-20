@@ -8,6 +8,7 @@
     <title>Mizan</title>
 </head>
 <body class="bg-gray-100 min-h-screen p-8 font-sans">
+    
     <nav class="flex justify-between items-center bg-black text-white p-4 rounded-xl shadow-md mb-8 max-w-4xl mx-auto">
         
         <div class="logo flex items-center gap-3">
@@ -20,18 +21,18 @@
                 <option value="MAD">MAD ( Dirham )</option>
                 <option value="USD">USD ( Dollar )</option>
                 <option value="EUR">EUR ( Euro )</option>
-            </select>
+            </select>   
             <button id="button-actualiser" class="bg-yellow-500 text-black px-5 py-2 rounded-md fonst-bold hover:bg-yellow-400 transition-colors">Actualiser</button>
+            <button id="button-store"class="bg-white text-black px-5 py-2 rounded-md hidden ">Go To Store</button>
+            <button id="button-front" class="bg-gray-300 text-black px-5 py-2 rounded-md">Live Prices</button>
         </div>
     </nav>
-
     <main class="max-w-4xl mx-auto">
-  
-        <div class="flex items-center  gap-2 text-sm text-gray-500 mb-2">
-            <img src="logo/lhorloge.png" id="logo-horloge" class="w-4 h-4">
-            <p id="last-update"></p>
-        </div>
-        <div id="loading-box" class="hidden my-3 p-3 rounded-lg bg-yellow-100 text-yellow-800 text-sm font-medium">
+    <div id="offline-banner" class="hidden my-3 p-3 rounded-lg bg-amber-100 text-amber-900 text-sm font-medium flex justify-between items-center">
+            <span id="offline-text">hors-ligne</span>
+            <button id="force-refresh-btn" class="px-3 py-1 bg-amber-600 text-white rounded">Refresh</button>
+     </div>
+     <div id="loading-box" class="hidden my-3 p-3 rounded-lg bg-yellow-100 text-yellow-800 text-sm font-medium">
                    Chargement ...
          </div>
 
@@ -42,7 +43,15 @@
          <div id="error-box" class="hidden my-3 p-3 rounded-lg bg-red-100 text-red-800 text-sm font-medium flex items-center justify-between">
          <span id="error-text">Erreur de connexion à l'API.</span>
         <button id="retry-btn" class="px-3 py-1 bg-red-600 text-white rounded hover:bg-red-700"> Retry</button>
-</div>
+         </div>
+       <section id="tab-1" class="hidden">
+    
+  
+        <div class="flex items-center  gap-2 text-sm text-gray-500 mb-2">
+            <img src="logo/lhorloge.png" id="logo-horloge" class="w-4 h-4">
+            <p id="last-update"></p>
+        </div>
+       
         
         <div id="metals-box" class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
             
@@ -94,7 +103,42 @@
                 </div>
             </div>
         </div>
+        </section>
+      <section id="tab-2">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-2xl font-bold text-gray-800">Catalogue Al Andalous</h2>
+                <button id="btn-open-create" class="bg-yellow-500 text-black px-4 py-2 rounded-md font-bold hover:bg-yellow-400">
+                    + Ajouter
+                </button>
+            </div>
 
+            <!-- Search, Filter, Sort (US-02) -->
+            <div class="bg-white p-4 rounded-xl shadow-md mb-6 flex flex-col sm:flex-row gap-3">
+                <input id="search-input" type="text" placeholder="Rechercher..." class="border border-gray-300 rounded-md px-3 py-2 w-full outline-none">
+                <select id="filter-status" class="border border-gray-300 rounded-md px-3 py-2 bg-white outline-none">
+                    <option value="all">Tous</option>
+                    <option value="disponible">Disponible</option>
+                    <option value="reserve">Réservé</option>
+                    <option value="vendu">Vendu</option>
+                    <option value="favorites">Favoris</option>
+                </select>
+                <select id="sort-select" class="border border-gray-300 rounded-md px-3 py-2 bg-white outline-none">
+                    <option value="date-desc">Date</option>
+                    <option value="title-asc">Titre (A-Z)</option>
+                    <option value="price-asc">Prix croissant</option>
+                    <option value="price-desc">Prix décroissant</option>
+                </select>
+            </div>
+
+            <!-- Empty State (US-06) -->
+            <div id="empty-state" class="hidden bg-white p-8 rounded-xl shadow-md text-center">
+                <p class="text-gray-600 mb-3">Aucun article trouvé.</p>
+                <button id="btn-reset-filters" class="bg-black text-white px-4 py-2 rounded-md">Reset filters</button>
+            </div>
+
+            <!-- Jewelry Cards List -->
+            <div id="catalog-list" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
+        </section>
     </main>
 </body>
 <script type="module" src="./js/main.js"></script>
