@@ -3,6 +3,14 @@
 **Mizan** est une application web développée sur mesure pour la bijouterie **Al Andalous** à Nador. Initialement conçue pour suivre en temps réel les cours de l'or et de l'argent (`MAD`, `USD`, `EUR`) et estimer la valeur d'un bijou au gramme, elle intègre désormais un **back-office CRUD complet** permettant de gérer le catalogue d'articles (bijoux, lingots, pièces) et les réservations clients de manière résiliente.
 
 ---
+## 🚀 Lancer le projet en local
+
+Ce projet utilise **json-server** pour simuler l'API REST du catalogue de bijoux (`db.json`).
+
+1. **Démarrer le serveur JSON (API locale) :**
+   Dans le terminal, à la racine du projet, lancez :
+   ```bash
+   npx json-server db.json
 
 ## ✨ Fonctionnalités principales
 
