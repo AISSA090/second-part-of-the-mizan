@@ -1,3 +1,5 @@
+import { getMetalPrices } from './store.js';
+import { calculatepricepergrame } from './calculator.js';
 export function displayGold(currency,data,percentage){
     const priceElement = document.getElementById("gold-price");
     const currencyElement = document.getElementById("gold-currency");
@@ -67,4 +69,68 @@ export function show(status) {
         loadingBox.classList.remove("hidden");
         btnActualiser.disabled = true;
     }
+}
+export function displayCatalog(items) {
+  const container = document.getElementById("catalog-list");
+  const emptyState = document.getElementById("empty-state");
+
+  container.replaceChildren();
+
+  if (!items || items.length === 0) {
+    emptyState.classList.remove("hidden");
+    return;
+  }
+
+  emptyState.classList.add("hidden");
+
+  const prices = getMetalPrices();
+
+  for (let i = 0; i < items.length; i++) {
+    const item = items[i];
+
+    const metalKey = item.metal.toLowerCase();
+    const pricePerGram = prices[metalKey] || 0;
+    const totalPrice = calculatepricepergrame(pricePerGram, item.weight);
+
+    const card = document.createElement("div");
+    card.className = "bg-white rounded-xl shadow-md overflow-hidden flex flex-col";
+
+    const img = document.createElement("img");
+    img.src = item.image;
+    img.alt = item.title;
+    img.className = "w-full h-48 object-cover";
+
+    const body = document.createElement("div");
+    body.className = "p-5 flex flex-col gap-2";
+
+    const title = document.createElement("h3");
+    title.className = "text-xl font-bold text-gray-800";
+    title.textContent = item.title;
+
+    const desc = document.createElement("p");
+    desc.className = "text-sm text-gray-600";
+    desc.textContent = item.description;
+
+    const details = document.createElement("p");
+    details.className = "text-sm font-semibold text-gray-700";
+    details.textContent = "Métal: " + item.metal + " | Poids: " + item.weight + "g";
+
+    const priceTag = document.createElement("p");
+    priceTag.className = "text-lg font-bold text-yellow-600";
+    priceTag.textContent = totalPrice > 0 ? totalPrice.toFixed(2) + " " + prices.currency: "Prix indisponible";
+
+    const badge = document.createElement("span");
+    badge.className = "inline-block w-fit px-3 py-1 text-xs font-bold rounded-full bg-yellow-100 text-yellow-800";
+    badge.textContent = item.status;
+
+    body.appendChild(title);
+    body.appendChild(desc);
+    body.appendChild(details);
+    body.appendChild(priceTag);
+    body.appendChild(badge);
+
+    card.appendChild(img);
+    card.appendChild(body);
+    container.appendChild(card);
+  }
 }
